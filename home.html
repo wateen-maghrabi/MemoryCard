@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memory-card</title>
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: violet;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Memory-card Game</h1>
+    <form id="start-game-form">
+        <label for="player-name">Enter your name:</label>
+        <input type="text" id="player-name" required>
+        <br>
+        <label for="game-level">Select game level:</label>
+        <select id="game-level">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <br>
+        <button type="submit">Start Game</button>
+    </form>
+    <audio id="game-start-audio" src="imp3/game.mp3"></audio>
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('start-game-form');
+        const gameStartAudio = document.getElementById('game-start-audio');
+
+        document.addEventListener('click', function() {
+          // تشغيل صوت بدء اللعبة
+          gameStartAudio.play();
+        });
+
+        document.addEventListener('input', function() {
+          // تشغيل صوت بدء اللعبة
+          gameStartAudio.play();
+        });
+
+        var startGameForm = document.getElementById("start-game-form");
+
+        startGameForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var playerName = document.getElementById("player-name").value;
+            var gameLevel = document.getElementById("game-level").value;
+
+            sessionStorage.setItem("playerName", playerName);
+            sessionStorage.setItem("gameLevel", gameLevel);
+
+            window.location.href = "game.html";
+        });
+    </script>
+
+</body>
+</html>
